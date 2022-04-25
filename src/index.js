@@ -1,13 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
+import storeInstance from './store/TodoStore';
 
+export const StoreContext = React.createContext();
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <StoreContext.Provider value={storeInstance}>
+      <App />
+    </StoreContext.Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
-
