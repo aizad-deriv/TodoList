@@ -5,11 +5,25 @@ const DisplayTodo = observer(() => {
   const store = useContext(StoreContext);
 
   return (
-    <ul>
+    <ul className="todo-container">
       {store.todos.map((todo) => (
-        <li key={todo.id} onClick={() => (todo.complete = !todo.complete)}>
-          <p>{todo.task}</p>
-          {todo.complete && <span>&nbsp;&nbsp;&nbsp;&#10004;</span>}
+        <li
+          key={todo.id}
+          onClick={() => (todo.complete = !todo.complete)}
+          className="todo-row"
+        >
+          {todo.complete ? (
+            <div className="todo">
+              <p className="success">{todo.task}</p>
+              <span style={{ color: '#aad576' }}>
+                &nbsp;&nbsp;&nbsp;&#10004;
+              </span>
+            </div>
+          ) : (
+            <div className="todo">
+              <p>{todo.task}</p>
+            </div>
+          )}
           <small onClick={() => store.deleteTodo(todo.id)}>&#10005;</small>
         </li>
       ))}

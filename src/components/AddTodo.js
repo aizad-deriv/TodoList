@@ -4,24 +4,30 @@ import { StoreContext } from '..';
 
 const AddTodo = observer(() => {
   const store = useContext(StoreContext);
-  console.log(store);
-
   const [input, setInput] = useState('');
 
+  const handleSubmit = (e) => {
+    if (input != '') {
+      store.addTodos(input);
+    }
+    setInput('');
+    e.preventDefault();
+  };
+
   return (
-    <form
-      onSubmit={(e) => {
-        store.addTodos(input);
-        setInput('');
-        e.preventDefault();
-      }}
-    >
-      <input
-        value={store.todos.task}
-        onChange={(e) => setInput(e.target.value)}
-      ></input>
-      <button type="submit">Add Task</button>
-    </form>
+    <>
+      <form className="add-todo" onSubmit={handleSubmit}>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add todo"
+          maxLength="20"
+        ></input>
+        <button className="add-btn" type="submit">
+          <small>&#xFF0B;</small>
+        </button>
+      </form>
+    </>
   );
 });
 

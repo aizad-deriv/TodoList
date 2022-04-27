@@ -1,0 +1,131 @@
+@import './reset.scss';
+@import './variables.scss';
+
+// functions for values
+@function weight($weight-name) {
+  @return map-get($font-weight, $weight-name);
+}
+
+@function size($size-name) {
+  @return map-get($font-size, $size-name);
+}
+
+body {
+  background-color: $bg-color;
+  color: $black;
+  letter-spacing: 0.2px;
+  font-family: 'Inter', sans-serif;
+}
+
+h1 {
+  font-size: size(heading);
+  font-weight: weight(bold);
+}
+
+h2 {
+  font-size: size(big);
+  font-weight: weight(regular);
+}
+
+small {
+  font-size: size(small);
+  font-weight: weight(regular);
+}
+
+p {
+  font-size: size(regular);
+  font-weight: weight(regular);
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: 15vh 60vh 25vh;
+}
+
+.header-container {
+  text-align: center;
+  padding: 25px 0px;
+}
+
+.content-container {
+  margin: 0 auto;
+  max-width: 800px;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+.todo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.todo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 2px solid $grey;
+  width: 500px;
+  :hover {
+    cursor: pointer;
+  }
+
+  .todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -ms-user-select: none;
+  }
+  .success {
+    text-decoration: line-through;
+  }
+}
+
+.footer-container {
+  // background-color: #495057
+  display: grid;
+  place-content: center;
+}
+
+.add-todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  input {
+    width: 400px;
+    padding: 15px;
+    background-color: #fff;
+    border: 2px solid $grey;
+  }
+}
+
+.add-btn {
+  background-color: #000;
+  border: 2px solid #000;
+  color: #fff;
+  padding: 15px 20px;
+  small {
+    font-weight: weight(bold);
+  }
+}
+
+.task-container {
+  margin: 15px 0px;
+}
+
+// scroll-bar
+*::-webkit-scrollbar {
+  width: 12px;
+  display: hidden;
+}
