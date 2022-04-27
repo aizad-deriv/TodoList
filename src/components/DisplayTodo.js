@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
-import { StoreContext } from '..';
-const DisplayTodo = observer(() => {
-  const store = useContext(StoreContext);
+import React from 'react';
+import { useStores } from '../store/RootStore';
+
+const DisplayTodo = observer(({ list }) => {
+  const { todoStore } = useStores();
   return (
     <ul className="todo-container">
-      {store.todos.map((todo) => (
+      {list.todos.map((todo) => (
         <li
           key={todo.id}
           onClick={() => (todo.complete = !todo.complete)}
@@ -23,7 +24,7 @@ const DisplayTodo = observer(() => {
               <p>{todo.task}</p>
             </div>
           )}
-          <small onClick={() => store.deleteTodo(todo.id)}>&#10005;</small>
+          <small onClick={() => todoStore.deleteTodo(todo.id)}>&#10005;</small>
         </li>
       ))}
     </ul>

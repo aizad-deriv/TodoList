@@ -1,14 +1,14 @@
 import { observer } from 'mobx-react-lite';
-import React, { useContext, useState } from 'react';
-import { StoreContext } from '..';
+import React, { useState } from 'react';
+import { useStores } from '../store/RootStore';
 
 const AddTodo = observer(() => {
-  const store = useContext(StoreContext);
+  const { todoStore } = useStores();
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
     if (input !== '') {
-      store.addTodos(input);
+      todoStore.addTodos(input);
     }
     setInput('');
     e.preventDefault();

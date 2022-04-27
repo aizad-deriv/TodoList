@@ -1,11 +1,11 @@
 import { action, decorate, observable } from 'mobx';
-import storeInstance from './TodoStore';
+import todoStore from './TodoStore';
 
 let initialLists = [
   {
     id: Math.random(),
     title: '⚙️ Testing',
-    todos: [storeInstance.todos],
+    todos: [todoStore.todos],
     date_created: new Date().toLocaleDateString(),
     close: false,
   },
@@ -21,13 +21,13 @@ class ListStore {
     this.lists.push({
       id: Math.random(),
       title: title,
-      todos: [storeInstance.addTodos()],
+      todos: [todoStore.addTodos()],
       date_created: new Date().toLocaleDateString(),
       close: false,
     });
   }
 
-  deleteList() {
+  deleteList(id) {
     // eslint-disable-next-line no-undef
     const deleteList = this.lists.filter((list) => list.id !== id);
     this.lists = deleteList;
@@ -41,4 +41,5 @@ decorate(ListStore, {
   deleteList: action.bound,
 });
 
-export default ListStore;
+const listStore = new ListStore();
+export default listStore;

@@ -40,9 +40,12 @@ decorate(TodoStore, {
   deleteTodo: action.bound,
 });
 
-const storeInstance = new TodoStore();
-reaction(
-  () => JSON.stringify(storeInstance.todos),
-  (json) => localStorage.setItem('todo-store', json)
-);
-export default storeInstance;
+// const storeInstance = new TodoStore();
+// reaction(
+//   () => JSON.stringify(storeInstance.todos),
+//   (json) => localStorage.setItem('todo-store', json)
+// );
+// export default storeInstance;
+
+const todoStore = new TodoStore();
+export default todoStore;
