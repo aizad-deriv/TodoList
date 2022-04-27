@@ -7,7 +7,7 @@ const AddTodo = observer(() => {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
-    if (input != '') {
+    if (input !== '') {
       store.addTodos(input);
     }
     setInput('');
