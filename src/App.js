@@ -6,13 +6,14 @@ import './sass/main.scss';
 
 const App = () => {
   const store = useContext(StoreContext);
+
   useEffect(() => {
     let json = localStorage.getItem('todo-store');
     if (json) {
       json = JSON.parse(json);
       store.todos.replace(json);
     }
-    console.log(store.todos);
+    // eslint-disable-next-line
   }, []);
 
   return (
