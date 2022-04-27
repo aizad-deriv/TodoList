@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { StoreContext } from '..';
 const DisplayTodo = observer(() => {
   const store = useContext(StoreContext);
-
   return (
     <ul className="todo-container">
       {store.todos.map((todo) => (

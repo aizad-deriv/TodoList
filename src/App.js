@@ -19,7 +19,6 @@ const App = () => {
     <div className="main-container">
       <div className="header-container">
         <h1>Ezy Todo ✅</h1>
-        <h2></h2>
       </div>
       <main className="content-container">
         <DisplayTodo />

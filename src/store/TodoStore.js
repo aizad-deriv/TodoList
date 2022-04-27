@@ -19,12 +19,6 @@ class TodoStore {
     this.todos = initialTodos;
   }
   // action
-  setTodo(id, task, complete) {
-    this.todos.id = id;
-    this.todos.task = task;
-    this.todos.complete = complete;
-  }
-
   addTodos(task) {
     this.todos.push({
       id: Math.random(),
@@ -42,7 +36,6 @@ class TodoStore {
 decorate(TodoStore, {
   todos: observable,
   complete: observable,
-  setTodo: action.bound,
   addTodos: action.bound,
   deleteTodo: action.bound,
 });
