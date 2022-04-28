@@ -15,6 +15,7 @@ body {
   color: $black;
   letter-spacing: 0.2px;
   font-family: 'Inter', sans-serif;
+  overflow: -moz-hidden-unscrollable hidden;
 }
 
 h1 {
@@ -50,7 +51,7 @@ p {
 
 .content-container {
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 390px;
   overflow-y: scroll;
   padding: 15px;
 }
@@ -96,7 +97,7 @@ p {
   margin-bottom: 15px;
   background-color: #fff;
   border: 2px solid $grey;
-  width: 375px;
+  width: 350px;
   height: 45px;
   :hover {
     cursor: pointer;
@@ -120,13 +121,14 @@ p {
 .footer-container {
   display: grid;
   place-content: center;
+  padding: 15px;
 }
 
 .add-todo {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 400px;
+  width: 350px;
   height: 45px;
   input {
     width: 90%;
