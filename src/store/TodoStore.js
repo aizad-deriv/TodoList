@@ -1,4 +1,11 @@
-import { decorate, observable, reaction, action } from 'mobx';
+import {
+  decorate,
+  observable,
+  reaction,
+  action,
+  autorun,
+  computed,
+} from 'mobx';
 
 let initialTodos = [
   {
@@ -35,12 +42,14 @@ class TodoStore {
 
 decorate(TodoStore, {
   todos: observable,
+  count: observable,
   complete: observable,
   addTodos: action.bound,
   deleteTodo: action.bound,
 });
 
 const storeInstance = new TodoStore();
+
 reaction(
   () => JSON.stringify(storeInstance.todos),
   (json) => localStorage.setItem('todo-store', json)
