@@ -1,11 +1,4 @@
-import {
-  decorate,
-  observable,
-  reaction,
-  action,
-  autorun,
-  computed,
-} from 'mobx';
+import { decorate, observable, reaction, action } from 'mobx';
 
 let initialTodos = [
   {
