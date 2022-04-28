@@ -3,6 +3,24 @@ import React, { useContext } from 'react';
 import { StoreContext } from '..';
 const DisplayTodo = observer(() => {
   const store = useContext(StoreContext);
+  if (store.todos.length === 0) {
+    return (
+      <div className="nothing-todo">
+        <div className="nothing">
+          <img
+            src="https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif"
+            width="200"
+            height="112.4"
+            alt="nothing-gif"
+          />
+          <div>
+            <h2>Nothing todo?</h2>
+            <p>Create a new todo!</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <ul className="todo-container">
       {store.todos.map((todo) => (

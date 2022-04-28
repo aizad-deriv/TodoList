@@ -30,7 +30,6 @@ const AddTodo = observer(({ count }) => {
       <div className="footer-text">
         <small>Max character input: 45</small>
       </div>
-      <p>Count: {count}</p>
     </>
   );
 });
