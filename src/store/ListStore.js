@@ -5,7 +5,7 @@ let initialLists = [
   {
     id: Math.random(),
     title: '⚙️ Testing',
-    todos: [todoStore.todos],
+    todos: todoStore.todos,
     date_created: new Date().toLocaleDateString(),
     close: false,
   },
@@ -15,13 +15,14 @@ class ListStore {
   //observable
   constructor() {
     this.lists = initialLists;
+    this.todos = todoStore.todos;
   }
 
   addList(title) {
     this.lists.push({
       id: Math.random(),
       title: title,
-      todos: [todoStore.addTodos()],
+      todos: this.todos,
       date_created: new Date().toLocaleDateString(),
       close: false,
     });
@@ -37,6 +38,7 @@ class ListStore {
 decorate(ListStore, {
   lists: observable,
   close: observable,
+  todos: observable,
   addList: action.bound,
   deleteList: action.bound,
 });

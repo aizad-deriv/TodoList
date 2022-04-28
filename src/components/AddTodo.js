@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
 import { useStores } from '../store/RootStore';
 
-const AddTodo = observer(() => {
+const AddTodo = () => {
   const { todoStore } = useStores();
   const [input, setInput] = useState('');
 
@@ -32,6 +32,6 @@ const AddTodo = observer(() => {
       </div>
     </>
   );
-});
+};
 
-export default AddTodo;
+export default observer(AddTodo);

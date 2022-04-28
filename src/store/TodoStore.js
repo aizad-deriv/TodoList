@@ -3,12 +3,12 @@ import { decorate, observable, reaction, action } from 'mobx';
 let initialTodos = [
   {
     id: Math.random(),
-    task: 'Do Stuff',
+    task: 'Test 1',
     complete: false,
   },
   {
     id: Math.random(),
-    task: 'Do other stuff',
+    task: 'Test 2',
     complete: false,
   },
 ];
@@ -28,8 +28,8 @@ class TodoStore {
   }
 
   deleteTodo(id) {
-    const newTodos = this.todos.filter((todo) => todo.id !== id);
-    this.todos = newTodos;
+    const deleteNote = this.todos.filter((todo) => todo.id !== id);
+    this.todos = deleteNote;
   }
 }
 

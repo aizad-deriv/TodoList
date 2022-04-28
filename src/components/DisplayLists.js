@@ -1,6 +1,9 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import { useStores } from '../store/RootStore';
 import AddTodo from './AddTodo';
+// import Todo from './Todo';
+import DisplayTodo from './DisplayTodo';
 
 const DisplayLists = () => {
   const { listStore } = useStores();
@@ -9,7 +12,12 @@ const DisplayLists = () => {
       {listStore.lists.map((list) => (
         <div key={list.id}>
           <h2>{list.title}</h2>
-          <DisplayLists list={list} />
+          <small>{list.date_created}</small>
+          <ul>
+            {list.todos.map((todo) => (
+              <DisplayTodo key={todo.id} todo={todo} />
+            ))}
+          </ul>
           <AddTodo />
         </div>
       ))}
@@ -17,4 +25,4 @@ const DisplayLists = () => {
   );
 };
 
-export default DisplayLists;
+export default observer(DisplayLists);
