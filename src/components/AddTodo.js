@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
 import { StoreContext } from '..';
 
-const AddTodo = observer(() => {
+const AddTodo = observer(({ count }) => {
   const store = useContext(StoreContext);
   const [input, setInput] = useState('');
 
@@ -30,6 +30,7 @@ const AddTodo = observer(() => {
       <div className="footer-text">
         <small>Max character input: 45</small>
       </div>
+      <p>Count: {count}</p>
     </>
   );
 });

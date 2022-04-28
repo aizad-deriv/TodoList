@@ -43,13 +43,14 @@ p {
 }
 
 .header-container {
-  text-align: center;
+  display: grid;
+  place-content: center;
   padding: 25px 0px;
 }
 
 .content-container {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 400px;
   height: 100%;
   overflow-y: scroll;
   padding: 15px;
@@ -71,11 +72,11 @@ p {
   margin-bottom: 15px;
   background-color: #fff;
   border: 2px solid $grey;
-  width: 500px;
+  width: 375px;
+  height: 45px;
   :hover {
     cursor: pointer;
   }
-
   .todo {
     display: flex;
     flex-direction: row;
@@ -101,11 +102,14 @@ p {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 400px;
+  height: 45px;
   input {
-    width: 400px;
-    padding: 15px;
+    width: 90%;
+    height: 100%;
     background-color: #fff;
     border: 2px solid $grey;
+    padding-left: 10px;
   }
 }
 
@@ -113,9 +117,12 @@ p {
   background-color: #000;
   border: 2px solid #000;
   color: #fff;
-  padding: 15px 20px;
+  width: 10%;
+  height: 100%;
   small {
     font-weight: weight(bold);
+    display: grid;
+    place-content: center;
   }
 }
 
@@ -130,6 +137,6 @@ p {
 
 // scroll-bar
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 1px;
   display: hidden;
 }

@@ -8,7 +8,9 @@ const DisplayTodo = observer(() => {
       {store.todos.map((todo) => (
         <li
           key={todo.id}
-          onClick={() => (todo.complete = !todo.complete)}
+          onClick={() => {
+            todo.complete = !todo.complete;
+          }}
           className="todo-row"
         >
           {todo.complete ? (
