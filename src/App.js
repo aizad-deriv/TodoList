@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { StoreContext } from '.';
 import AddTodo from './components/AddTodo';
 import DisplayTodo from './components/DisplayTodo';
+import NoTodos from './components/NoTodos';
 import './sass/main.scss';
 
 const App = () => {
   const store = useContext(StoreContext);
-
   useEffect(() => {
     let json = localStorage.getItem('todo-store');
     if (json) {
@@ -23,10 +23,11 @@ const App = () => {
       </div>
       <main className="content-container">
         <DisplayTodo />
+        <NoTodos />
       </main>
-      <div className="footer-container">
+      <footer>
         <AddTodo />
-      </div>
+      </footer>
     </div>
   );
 };
