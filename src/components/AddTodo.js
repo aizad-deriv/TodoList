@@ -1,8 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useState } from 'react';
 import { StoreContext } from '..';
+import CompleteTodos from './CompleteTodos';
 
-const AddTodo = observer(({ count }) => {
+const AddTodo = observer(() => {
   const store = useContext(StoreContext);
   const [input, setInput] = useState('');
 
@@ -13,9 +14,9 @@ const AddTodo = observer(({ count }) => {
     setInput('');
     e.preventDefault();
   };
-
   return (
-    <>
+    <div className="footer-container">
+      <CompleteTodos />
       <form className="add-todo" onSubmit={handleSubmit}>
         <input
           value={input}
@@ -30,7 +31,7 @@ const AddTodo = observer(({ count }) => {
       <div className="footer-text">
         <small>Max character input: 45</small>
       </div>
-    </>
+    </div>
   );
 });
 

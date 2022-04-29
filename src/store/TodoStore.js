@@ -1,14 +1,14 @@
-import { decorate, observable, reaction, action } from 'mobx';
+import { decorate, observable, reaction, action, computed } from 'mobx';
 
 let initialTodos = [
   {
     id: Math.random(),
-    task: 'Do Stuff',
+    task: 'Open tabs to make yourself look busy',
     complete: false,
   },
   {
     id: Math.random(),
-    task: 'Do other stuff',
+    task: 'Act like you know what youre doing',
     complete: false,
   },
 ];
@@ -31,14 +31,20 @@ class TodoStore {
     const newTodos = this.todos.filter((todo) => todo.id !== id);
     this.todos = newTodos;
   }
+
+  get todoCount() {
+    let count = this.todos.filter((todo) => todo.complete).length;
+    let finalCount = count / this.todos.length;
+    return finalCount;
+  }
 }
 
 decorate(TodoStore, {
   todos: observable,
-  count: observable,
   complete: observable,
   addTodos: action.bound,
   deleteTodo: action.bound,
+  todoCount: computed,
 });
 
 const storeInstance = new TodoStore();
