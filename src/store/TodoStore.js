@@ -30,6 +30,7 @@ class TodoStore {
   deleteTodo(id) {
     const deleteNote = this.todos.filter((todo) => todo.id !== id);
     this.todos = deleteNote;
+    console.log(this.todos);
   }
 }
 

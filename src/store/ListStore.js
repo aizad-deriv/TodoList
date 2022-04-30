@@ -1,11 +1,11 @@
 import { action, decorate, observable } from 'mobx';
-import todoStore from './TodoStore';
+import { nanoid } from 'nanoid';
 
 let initialLists = [
   {
-    id: Math.random(),
+    id: nanoid(),
     title: '⚙️ Testing',
-    todos: todoStore.todos,
+    todos: [],
     date_created: new Date().toLocaleDateString(),
     close: false,
   },
@@ -15,12 +15,12 @@ class ListStore {
   //observable
   constructor() {
     this.lists = initialLists;
-    this.todos = todoStore.todos;
+    this.todos = initialLists.todos;
   }
 
   addList(title) {
     this.lists.push({
-      id: Math.random(),
+      id: nanoid(),
       title: title,
       todos: this.todos,
       date_created: new Date().toLocaleDateString(),
@@ -33,14 +33,31 @@ class ListStore {
     const deleteList = this.lists.filter((list) => list.id !== id);
     this.lists = deleteList;
   }
+
+  addTodos(task) {
+    this.todos.push({
+      id: Math.random(),
+      task: task,
+      complete: false,
+    });
+  }
+
+  deleteTodo(id) {
+    const deleteNote = this.todos.filter((todo) => todo.id !== id);
+    this.todos = deleteNote;
+    console.log(this.todos);
+  }
 }
 
 decorate(ListStore, {
   lists: observable,
   close: observable,
   todos: observable,
+  complete: observable,
   addList: action.bound,
   deleteList: action.bound,
+  addTodos: action.bound,
+  deleteTodo: action.bound,
 });
 
 const listStore = new ListStore();

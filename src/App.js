@@ -1,7 +1,6 @@
 import React from 'react';
 import AddTodo from './components/AddTodo';
 import DisplayLists from './components/DisplayLists';
-import DisplayTodo from './components/DisplayTodo';
 // import './sass/main.scss';
 
 const App = () => {
@@ -16,18 +15,15 @@ const App = () => {
 
   return (
     <div className="main-container">
-      <div className="header-container">
+      <header className="header-container">
         <h1>Ezy Todo ✅</h1>
-      </div>
-      {/* <main className="content-container">
-        <DisplayTodo />
-      </main> */}
-      {/* <div className="footer-container">
-        <AddTodo />
-      </div> */}
-      <div>
+      </header>
+      <main>
         <DisplayLists />
-      </div>
+      </main>
+      <footer>
+        <AddTodo />
+      </footer>
     </div>
   );
 };
